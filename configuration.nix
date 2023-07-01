@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      home-manager.nixosModules.default
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -50,6 +50,7 @@
     extraGroups = [ "wheel" "video" ];
   };
 
+  home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   environment.pathsToLink = [ "/share/bash-completion" ];
   home-manager.users.moody = {pkgs, fonts, ... }: {
