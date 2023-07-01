@@ -13,6 +13,10 @@
 
   networking.hostName = "sakuya";
   networking.hostId = "d028bb22";
+  networking.extraHosts =
+  ''
+    192.168.168.209 flan
+  '';
 
   boot.supportedFilesystems = [ "zfs" ];
   fileSystems = {
