@@ -120,24 +120,24 @@
       config = rec {
         modifier = "Mod4";
         terminal = "foot";
-	bars = [];
-	startup = [
+        bars = [];
+        startup = [
           { command = "wlclock --position top-right --output DP-1"; }
-	];
+        ];
         colors = {
           focused = {
             background = "#000000";
             border = "#55aaaa";
             text = "#000000";
-	    childBorder = "#55aaaa";
-	    indicator = "#000000";
+            childBorder = "#55aaaa";
+            indicator = "#000000";
           };
           unfocused = {
             background = "#b2b2b2";
             border = "#9eeeee";
             text = "#000000";
-	    childBorder = "#9eeeee";
-	    indicator = "#000000";
+            childBorder = "#9eeeee";
+            indicator = "#000000";
           };
         };
         window.commands = [
@@ -150,7 +150,7 @@
             };
           }
         ];
-	# tiling is for nerds
+        # tiling is for nerds
         floating.criteria = [
           { title = "[.]*";  }
           { app_id = "[.]*";  }
