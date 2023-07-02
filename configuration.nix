@@ -122,6 +122,18 @@
       };
     };
 
+    services = {
+      mako = {
+        enable = true;
+        font = "VGA 12";
+        anchor = "top-left";
+        output = "DP-1";
+        backgroundColor = "#FFFFFFFF";
+        textColor = "#000000FF";
+        borderColor = "#55aaaaFF";
+      };
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       #unforunately we can not use these flags with homemanger
@@ -228,6 +240,7 @@
      rc-9front
      drawterm-wayland
      tlsclient
+     libnotify
 
      # YUCK!
      discord
