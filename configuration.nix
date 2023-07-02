@@ -18,6 +18,11 @@
     192.168.168.209 flan
   '';
 
+  security.pam.dp9ik = {
+    enable = true;
+    authserver = "flan";
+  };
+
   boot.supportedFilesystems = [ "zfs" ];
   fileSystems = {
     "/media" = {
@@ -62,6 +67,7 @@
     home.stateVersion = "23.05";
     home.sessionVariables = {
       EDITOR = "nvim";
+      LESS = "-asrRix8F";
     };
     home.shellAliases = {
       "dn" = "makoctl dismiss -a";
@@ -219,6 +225,9 @@
      jq
      htop
      wlclock
+     rc-9front
+     drawterm-wayland
+     tlsclient
 
      # YUCK!
      discord
@@ -249,34 +258,6 @@
          fi
        ''
      )
-
-     # waiting on upstream...
-     (drawterm.overrideAttrs (finalAttrs: previousAttrs: {
-       src = fetchgit {
-         url = "git://git.9front.org/plan9front/drawterm";
-         rev = "36debf46ac184a22c6936345d22e4cfad995948c";
-         sha256 = "ebqw1jqeRC0FWeUIO/HaEovuwzU6+B48TjZbVJXByvA=";
-       };
-       version = "unstable-2023-06-27";
-       makeFlags = [ "CONF=linux" ];
-       nativeBuildInputs = [ pkg-config wayland-scanner ];
-       buildInputs = [
-         pipewire
-         wayland-protocols
-         wayland
-         libxkbcommon
-         (wlr-protocols.overrideAttrs (finalAttrs: previousAttrs: {
-           version = "unstable-2022-09-05";
-           src = fetchFromGitLab {
-             domain = "gitlab.freedesktop.org";
-             owner = "wlroots";
-             repo = "wlr-protocols";
-             rev = "4264185db3b7e961e7f157e1cc4fd0ab75137568";
-             sha256 = "Ztc07RLg+BZPondP/r6Jo3Fw1QY/z1QsFvdEuOqQshA=";
-           };
-         }))
-       ];
-     }))
    ];
 
   services.pipewire = {
