@@ -1,7 +1,7 @@
 { config, pkgs, home-manager, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       home-manager.nixosModules.default
     ];
@@ -14,9 +14,9 @@
   networking.hostName = "sakuya";
   networking.hostId = "d028bb22";
   networking.extraHosts =
-  ''
-    192.168.168.209 flan
-  '';
+    ''
+      192.168.168.209 flan
+    '';
 
   security.pam.dp9ik = {
     enable = true;
@@ -62,8 +62,8 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   environment.pathsToLink = [ "/share/bash-completion" ];
-  home-manager.users.moody = {pkgs, fonts, ... }: {
-    home.packages = [];
+  home-manager.users.moody = { pkgs, fonts, ... }: {
+    home.packages = [ ];
     home.stateVersion = "23.05";
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -85,21 +85,39 @@
         enable = true;
         viAlias = true;
         vimAlias = true;
+        coc = {
+          enable = true;
+          settings = {
+            languageserver = {
+              nix = {
+                command = "nil";
+                filetypes = [ "nix" ];
+                rootPatterns = [ "flake.nix" ];
+                settings.nil.formatting.command = [ "nixpkgs-fmt" ];
+              };
+            };
+            coc.preferences.formatOnSaveFiletypes = [ "nix" ];
+          };
+        };
+
+        plugins = with pkgs.vimPlugins; [
+          vim-go
+        ];
       };
       foot = {
         enable = true;
         settings = {
           main = {
-            term="xterm-256color";
+            term = "xterm-256color";
             font = "VGA:size=12";
             font-bold = "VGA:size=12";
             font-italic = "VGA:size=12";
           };
-          cursor.color="45363b 45363b";
+          cursor.color = "45363b 45363b";
           colors = {
             background = "FFFFFF";
             foreground = "45363b";
-            
+
             regular0 = "20111a";
             regular1 = "bd100d";
             regular2 = "858062";
@@ -108,7 +126,7 @@
             regular5 = "96522b";
             regular6 = "98999c";
             regular7 = "958b83";
-            
+
             bright0 = "5e5252";
             bright1 = "bd100d";
             bright2 = "858062";
@@ -142,10 +160,10 @@
         bindsym --release Mod4+z exec "mutemic 1"
         bindsym Mod4+Shift+z exec "auxtoggle"
       '';
-      config = rec {
+      config = {
         modifier = "Mod4";
         terminal = "foot";
-        bars = [];
+        bars = [ ];
         startup = [
           { command = "wlclock --position top-right --output DP-1"; }
         ];
@@ -177,9 +195,9 @@
         ];
         # tiling is for nerds
         floating.criteria = [
-          { title = "[.]*";  }
-          { app_id = "[.]*";  }
-          { class = "[.]*";  }
+          { title = "[.]*"; }
+          { app_id = "[.]*"; }
+          { class = "[.]*"; }
         ];
         output = {
           DP-1 = {
@@ -205,73 +223,77 @@
     };
   };
 
-   nixpkgs.config.allowUnfree = true;
-   environment.systemPackages = with pkgs; [
-     curl
-     wayland
-     grim
-     slurp
-     wl-clipboard
-     mako
-     xdg-utils
-     bemenu
-     wdisplays
-     wget
-     firefox
-     sway
-     telegram-desktop
-     pavucontrol
-     zfs
-     passage
-     gnumake
-     gcc
-     pipewire
-     git
-     hexchat
-     thunderbird
-     gnome3.adwaita-icon-theme
-     nawk
-     xfce.thunar
-     transmission-gtk
-     mpv
-     jq
-     htop
-     wlclock
-     rc-9front
-     drawterm-wayland
-     tlsclient
-     libnotify
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
+    curl
+    wayland
+    grim
+    slurp
+    wl-clipboard
+    mako
+    xdg-utils
+    bemenu
+    wdisplays
+    wget
+    firefox
+    sway
+    telegram-desktop
+    pavucontrol
+    zfs
+    passage
+    gnumake
+    gcc
+    pipewire
+    git
+    hexchat
+    thunderbird
+    gnome3.adwaita-icon-theme
+    nawk
+    xfce.thunar
+    transmission-gtk
+    mpv
+    jq
+    htop
+    wlclock
+    rc-9front
+    drawterm-wayland
+    tlsclient
+    libnotify
+    go
+    gopls
+    nil
+    nixpkgs-fmt
 
-     # YUCK!
-     discord
+    # YUCK!
+    discord
 
-     (writeScriptBin "mutemic"
+    (writeScriptBin "mutemic"
       ''
-         #!/usr/bin/env bash
-         # wpctl is the pactl we have at home
-         mic="alsa_input.usb-0c76_USB_PnP_Audio_Device-00.mono-fallback"
-         id="$(pw-dump -N | jq '.[] | select(.info.props."node.name"=="'$mic'")| .id')"
-         if test "$#" -gt 0; then
-           wpctl set-mute $id $*
-         else
-           wpctl set-mute $id toggle
-         fi
-       ''
-     )
-     (writeScriptBin "auxtoggle"
-       ''
-         #!/usr/bin/env bash
-         # everything uses id's except pw-metadata because no one thought this out
-         speakers="alsa_output.pci-0000_0c_00.4.analog-stereo"
-         cans="alsa_output.usb-JDS_Labs_JDS_Labs_Atom_DAC-00.analog-stereo"
-         if pw-metadata 0 default.audio.sink | grep -q $cans; then
-           pw-metadata 0 default.audio.sink '{"name":"'$speakers'"}'
-         else
-           pw-metadata 0 default.audio.sink '{"name":"'$cans'"}'
-         fi
-       ''
-     )
-   ];
+        #!/usr/bin/env bash
+        # wpctl is the pactl we have at home
+        mic="alsa_input.usb-0c76_USB_PnP_Audio_Device-00.mono-fallback"
+        id="$(pw-dump -N | jq '.[] | select(.info.props."node.name"=="'$mic'")| .id')"
+        if test "$#" -gt 0; then
+          wpctl set-mute $id $*
+        else
+          wpctl set-mute $id toggle
+        fi
+      ''
+    )
+    (writeScriptBin "auxtoggle"
+      ''
+        #!/usr/bin/env bash
+        # everything uses id's except pw-metadata because no one thought this out
+        speakers="alsa_output.pci-0000_0c_00.4.analog-stereo"
+        cans="alsa_output.usb-JDS_Labs_JDS_Labs_Atom_DAC-00.analog-stereo"
+        if pw-metadata 0 default.audio.sink | grep -q $cans; then
+          pw-metadata 0 default.audio.sink '{"name":"'$speakers'"}'
+        else
+          pw-metadata 0 default.audio.sink '{"name":"'$cans'"}'
+        fi
+      ''
+    )
+  ];
 
   services.pipewire = {
     enable = true;
@@ -317,6 +339,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
 
