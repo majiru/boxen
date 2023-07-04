@@ -1,15 +1,26 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports =
     [
       ./hardware-configuration.nix
-      home-manager.nixosModules.default
+      inputs.home-manager.nixosModules.default
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      vimPlugins = super.vimPlugins // {
+        vacme-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+          name = "vacme-vim";
+          src = inputs.vacme-vim;
+        };
+      };
+    })
+  ];
 
   networking.hostName = "sakuya";
   networking.hostId = "d028bb22";
@@ -100,7 +111,13 @@
           };
         };
 
+        extraConfig =
+          ''
+            set termguicolors
+          '';
+
         plugins = with pkgs.vimPlugins; [
+          { plugin = vacme-vim; config = "colorscheme vacme"; }
           vim-go
         ];
       };

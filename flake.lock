@@ -40,7 +40,24 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "vacme-vim": "vacme-vim"
+      }
+    },
+    "vacme-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1484451883,
+        "narHash": "sha256-eea0Ntr3gCmF6iZ0adZaVswWH70K9IJZ4SAyVSdFp3E=",
+        "owner": "olivertaylor",
+        "repo": "vacme",
+        "rev": "2f0b284b5bc1c9dd5b7f0b89ac880959e61b0be4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olivertaylor",
+        "repo": "vacme",
+        "type": "github"
       }
     }
   },

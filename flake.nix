@@ -5,12 +5,17 @@
     nixpkgs.url = "github:majiru/nixpkgs/nixos-23.05";
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    vacme-vim = {
+      url = "github:olivertaylor/vacme";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs,  ... }@attrs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations."sakuya" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = attrs;
+      specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
       ];
