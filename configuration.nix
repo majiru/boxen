@@ -166,6 +166,8 @@
         backgroundColor = "#FFFFFFFF";
         textColor = "#000000FF";
         borderColor = "#55aaaaFF";
+        borderSize = 4;
+        format = "%s\\n%b";
       };
     };
 
@@ -280,6 +282,7 @@
     gopls
     nil
     nixpkgs-fmt
+    imv
 
     # YUCK!
     discord
