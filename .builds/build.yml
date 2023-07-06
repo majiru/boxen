@@ -1,0 +1,9 @@
+image: nixos/latest
+sources:
+  - https://git.sr.ht/~moody/sakuya
+environment:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
+tasks:
+  - build: |
+      cd sakuya
+      nix build '.#nixosConfigurations.sakuya.config.system.build.toplevel'
