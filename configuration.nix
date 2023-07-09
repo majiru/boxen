@@ -63,6 +63,8 @@
     noto-fonts
   ];
 
+  documentation.man.generateCaches = true;
+
   hardware.opengl.enable = true;
   security.polkit.enable = true;
   users.users.moody = {
@@ -283,6 +285,11 @@
     nil
     nixpkgs-fmt
     imv
+    qemu_kvm
+    ffmpeg
+    vlc
+    man-pages
+    man-pages-posix
 
     # YUCK!
     discord
@@ -338,6 +345,8 @@
 
   # List services that you want to enable:
 
+  services.avahi.enable = true;
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
@@ -345,7 +354,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
