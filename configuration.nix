@@ -10,6 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.registry."N".flake = inputs.nixpkgs;
 
   nixpkgs.overlays = [
     (self: super: {
