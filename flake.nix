@@ -3,8 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:majiru/nixpkgs/nixos-23.05";
+
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    gameover.url = "sourcehut:~moody/gameover";
+    gameover.inputs.nixpkgs.follows = "nixpkgs";
 
     vacme-vim = {
       url = "github:olivertaylor/vacme";

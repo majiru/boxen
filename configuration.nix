@@ -21,6 +21,7 @@
         };
       };
     })
+    inputs.gameover.overlays.default
   ];
 
   networking.hostName = "sakuya";
@@ -291,6 +292,8 @@
     vlc
     man-pages
     man-pages-posix
+    games.pokecrystal
+    games.pokered
 
     # YUCK!
     discord
