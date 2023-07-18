@@ -294,6 +294,8 @@
     man-pages-posix
     games.pokecrystal
     games.pokered
+    games.shipwright
+    pc
 
     # YUCK!
     discord
