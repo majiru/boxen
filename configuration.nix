@@ -36,6 +36,7 @@
     authserver = "flan";
   };
 
+  system.fsPackages = [ pkgs._9ptls ];
   boot.supportedFilesystems = [ "zfs" ];
   fileSystems = {
     "/media" = {
@@ -83,6 +84,10 @@
     home.sessionVariables = {
       EDITOR = "nvim";
       LESS = "-asrRix8F";
+      GRIM_DEFAULT_DIR = "/home/moody/pic/";
+      PLAN9 = "${pkgs.plan9port}/plan9";
+      XDG_DESKTOP_DIR = "/home/moody/desktop";
+      XDG_DOWNLOAD_DIR = "/home/moody/downloads";
     };
     home.shellAliases = {
       "dn" = "makoctl dismiss -a";
