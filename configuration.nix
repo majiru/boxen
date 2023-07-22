@@ -301,6 +301,11 @@
     games.pokered
     games.shipwright
     pc
+    hunspell
+    hunspellDicts.en_US
+    plan9port
+    ed
+    file
 
     # YUCK!
     discord
