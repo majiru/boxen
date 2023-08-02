@@ -2,7 +2,6 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -97,6 +96,8 @@
     programs = {
       bash = {
         enable = true;
+        historyFile = "$HOME/.history";
+        historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
         bashrcExtra = ''
           export PS1="; "
         '';
@@ -123,10 +124,20 @@
         extraConfig =
           ''
             set termguicolors
+            set clipboard=unnamedplus
           '';
 
         plugins = with pkgs.vimPlugins; [
           { plugin = vacme-vim; config = "colorscheme vacme"; }
+          {
+            plugin = nvim-lastplace;
+            config = ''
+              lua require'nvim-lastplace'.setup{}
+              let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+              let g:lastplace_ignore_filetype = "gitcommit,gitrebase,svn,hgcommit"
+              let g:lastplace_open_folds = 1
+            '';
+          }
           vim-go
         ];
       };
@@ -306,6 +317,8 @@
     plan9port
     ed
     file
+    nixpkgs-review
+    unzip
 
     # YUCK!
     discord
