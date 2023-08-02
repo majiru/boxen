@@ -23,12 +23,45 @@
     inputs.gameover.overlays.default
   ];
 
+  # Don't let ethernet card DHCP
+  networking.useDHCP = false;
   networking.hostName = "sakuya";
   networking.hostId = "d028bb22";
-  networking.extraHosts =
-    ''
-      192.168.168.209 flan
-    '';
+  networking.extraHosts = ''
+    192.168.168.209 flan
+  '';
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "20-br0".netdevConfig = {
+        Kind = "bridge";
+        Name = "br0";
+        MACAddress = "de:ad:be:ef:42:13";
+      };
+      "20-tap0".netdevConfig = {
+        Kind = "tap";
+        Name = "tap0";
+      };
+    };
+    networks = {
+      "30-enp7s0" = {
+        matchConfig.Name = "enp7s0";
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
+      };
+      "30-tap0" = {
+        matchConfig.Name = "tap0";
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
+      };
+      "40-br0" = {
+        matchConfig.Name = "br0";
+        networkConfig.DHCP = "ipv4";
+        bridgeConfig = { };
+        linkConfig.RequiredForOnline = "routable";
+      };
+    };
+  };
 
   security.pam.dp9ik = {
     enable = true;
