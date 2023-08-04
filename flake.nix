@@ -17,13 +17,29 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."sakuya" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hardware-configuration.nix
-        ./configuration.nix
-      ];
+    nixosConfigurations = {
+      "sakuya" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./sakuya-hardware.nix
+          ./prefs.nix
+          ./nix.nix
+          ./sakuya.nix
+          ./home.nix
+        ];
+      };
+      "marisa" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./marisa-hardware.nix
+          ./nix.nix
+          ./prefs.nix
+          ./marisa.nix
+          ./home.nix
+        ];
+      };
     };
   };
 }
