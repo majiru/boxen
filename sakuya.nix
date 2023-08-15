@@ -113,6 +113,9 @@
     games.pokecrystal
     games.pokered
     games.shipwright
+    games.pokeemerald
+    games.zelda3
+    games.firered
     pc
     hunspell
     hunspellDicts.en_US

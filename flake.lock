@@ -5,16 +5,14 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pokecrystal": "pokecrystal",
-        "pokered": "pokered",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1689280129,
-        "narHash": "sha256-XuzloAx6zIvGFeAu0aXPlMBFA0/WxvofLCFXTnqV+Qc=",
+        "lastModified": 1691038481,
+        "narHash": "sha256-BSFKK2zcMMoXuxf124jVRAPm9I0q/rs7oQ+SXlvpmcs=",
         "owner": "~moody",
         "repo": "gameover",
-        "rev": "8ad8b09779b1fca02e54e4140f75fcf2d0ba638c",
+        "rev": "e3edcfa125673414a9ac2c2c814d129ca18cdc38",
         "type": "sourcehut"
       },
       "original": {
@@ -30,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687871164,
-        "narHash": "sha256-bBFlPthuYX322xOlpJvkjUBz0C+MOBjZdDOOJJ+G2jU=",
+        "lastModified": 1691963086,
+        "narHash": "sha256-OHpCjDC9jsMDzyNJslJUeONaNkSDQA5t7qGpurVsVww=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "07c347bb50994691d7b0095f45ebd8838cf6bc38",
+        "rev": "7f351e2993ed170dd9b8521a9e41f4d91d9b9c5d",
         "type": "github"
       },
       "original": {
@@ -46,49 +44,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1690940629,
-        "narHash": "sha256-ux+rOBnDHX8vuk2AX7iKIMzThif4k8OfUc4PTjDXtco=",
+        "lastModified": 1692045497,
+        "narHash": "sha256-KgM/wAPXnchsuvaIBe3aaRlEVcLk6JzB4Q8KgMQkZlY=",
         "owner": "majiru",
         "repo": "nixpkgs",
-        "rev": "816d147f9807776254574bdb60be96c66af4a44e",
+        "rev": "b9e102419bbcbcc9d496a067ba35501e47ce5fbe",
         "type": "github"
       },
       "original": {
         "owner": "majiru",
         "ref": "nixos-23.05",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "pokecrystal": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1687464943,
-        "narHash": "sha256-pzGYWz/GhHWZDx2jFE3w11kCp00jd7QPbWa5T9iLE4Y=",
-        "owner": "pret",
-        "repo": "pokecrystal",
-        "rev": "31c55dc74d4d771c805fdf4e7994daaa17f65b5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pret",
-        "repo": "pokecrystal",
-        "type": "github"
-      }
-    },
-    "pokered": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1683730185,
-        "narHash": "sha256-MUAxReOXWQR64Xy/RwqcJc/kKPfUIuqGeaVHSdHwxIk=",
-        "owner": "pret",
-        "repo": "pokered",
-        "rev": "d3128b9a7ffab9d4d9b615acf9527ee2f1744749",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pret",
-        "repo": "pokered",
         "type": "github"
       }
     },
