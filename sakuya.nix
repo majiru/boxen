@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
 
   boot.loader.systemd-boot.enable = true;
@@ -43,6 +43,11 @@
       };
     };
   };
+
+  systemd.services."systemd-networkd-wait-online".serviceConfig.ExecStart = [
+    ""
+    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
+  ];
 
   security.pam.dp9ik = {
     enable = true;
