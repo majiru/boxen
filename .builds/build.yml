@@ -8,4 +8,5 @@ tasks:
       cd sakuya
       # Can't build oot without the rom
       sed -i '/shipwright/d' sakuya.nix
+      sed -i '/zelda3/d' sakuya.nix
       nix build '.#nixosConfigurations.sakuya.config.system.build.toplevel' '.#nixosConfigurations.marisa.config.system.build.toplevel'
