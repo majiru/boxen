@@ -128,7 +128,9 @@
     ed
     file
     nixpkgs-review
-    unzip
+    unzrip
+    dolphin-emu
+    citra-nightly
 
     # YUCK!
     discord
@@ -161,6 +163,7 @@
     )
   ];
 
+  services.udev.packages = [ pkgs.dolphin-emu ];
   programs.steam.enable = true;
   services.avahi.enable = true;
   networking.firewall.enable = false;

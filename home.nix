@@ -23,6 +23,7 @@
     home.shellAliases = {
       "dn" = "makoctl dismiss -a";
       "grimslurp" = ''grim -g "$(slurp)"'';
+      "unzip" = "unzrip";
     };
 
     programs = {

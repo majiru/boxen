@@ -70,7 +70,7 @@
     ed
     file
     nixpkgs-review
-    unzip
+    unzrip
 
     # YUCK!
     discord
