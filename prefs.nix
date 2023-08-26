@@ -16,7 +16,7 @@
     wlr.enable = true;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     uni-vga
     dejavu_fonts
     freefont_ttf

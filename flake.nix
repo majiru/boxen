@@ -2,9 +2,9 @@
   description = "moody's linux systems";
 
   inputs = {
-    nixpkgs.url = "github:majiru/nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     gameover.url = "sourcehut:~moody/gameover";
