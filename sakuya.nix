@@ -3,6 +3,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernel.sysctl = {
+    "net.ipv4.tcp_congestion_control" = "reno";
+  };
 
   # Don't let ethernet card DHCP
   networking.useDHCP = false;
@@ -120,7 +124,9 @@
     games.shipwright
     games.pokeemerald
     games.zelda3
-    games.firered
+    games.pokefirered
+    games.pokeyellow
+    games.pokegold
     pc
     hunspell
     hunspellDicts.en_US
@@ -131,6 +137,9 @@
     unzrip
     dolphin-emu
     citra-nightly
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
+    })
 
     # YUCK!
     discord

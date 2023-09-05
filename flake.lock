@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1691038481,
-        "narHash": "sha256-BSFKK2zcMMoXuxf124jVRAPm9I0q/rs7oQ+SXlvpmcs=",
+        "lastModified": 1693058235,
+        "narHash": "sha256-Y8JGoEg8fyG1Z0hKN9yvW407EJpsCPSsaTPstdeSVGs=",
         "owner": "~moody",
         "repo": "gameover",
-        "rev": "e3edcfa125673414a9ac2c2c814d129ca18cdc38",
+        "rev": "cbc3e430134825286483b4fee3be2778b762a858",
         "type": "sourcehut"
       },
       "original": {
@@ -43,11 +43,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1692808169,
-        "narHash": "sha256-x9Opq06rIiwdwGeK2Ykj69dNc2IvUH1fY55Wm7atwrE=",
+        "lastModified": 1692934111,
+        "narHash": "sha256-9EEE59v/esKNMR5zKbLRV9NoRPYvERw5jHQOnfr47bk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9201b5ff357e781bf014d0330d18555695df7ba8",
+        "rev": "1e44a037bbf4fcaba041436e65e87be88f3f495b",
         "type": "github"
       },
       "original": {
