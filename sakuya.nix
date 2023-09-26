@@ -173,6 +173,7 @@
   ];
 
   services.udev.packages = [ pkgs.dolphin-emu ];
+  services.jellyfin.enable = true;
   programs.steam.enable = true;
   services.avahi.enable = true;
   networking.firewall.enable = false;
