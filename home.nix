@@ -49,8 +49,13 @@
                 rootPatterns = [ "flake.nix" ];
                 settings.nil.formatting.command = [ "nixpkgs-fmt" ];
               };
+              go = {
+                command = "gopls";
+                filetypes = [ "go" ];
+                rootPatterns = [ "go.work" "go.mod" ".vim/" ".git/" ".hg/" ];
+              };
             };
-            coc.preferences.formatOnSaveFiletypes = [ "nix" ];
+            coc.preferences.formatOnSaveFiletypes = [ "nix" "go" ];
           };
         };
 
