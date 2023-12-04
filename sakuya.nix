@@ -137,6 +137,7 @@
     unzrip
     dolphin-emu
     citra-nightly
+    pinentry-curses
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
     })
@@ -175,6 +176,11 @@
   services.udev.packages = [ pkgs.dolphin-emu ];
   services.jellyfin.enable = true;
   programs.steam.enable = true;
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+  };
   services.avahi.enable = true;
   networking.firewall.enable = false;
 
