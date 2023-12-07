@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    gameover.url = "sourcehut:~moody/gameover";
+    gameover.url = "github:majiru/gameover";
     gameover.inputs.nixpkgs.follows = "nixpkgs";
 
     vacme-vim = {

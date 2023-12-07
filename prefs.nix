@@ -14,6 +14,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    config.common.default = "*";
   };
 
   fonts.packages = with pkgs; [

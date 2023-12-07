@@ -138,6 +138,7 @@
     dolphin-emu
     citra-nightly
     pinentry-curses
+    chromium
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
     })
