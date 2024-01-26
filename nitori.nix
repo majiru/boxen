@@ -55,10 +55,7 @@
     man-pages-posix
     games.pokecrystal
     games.pokered
-    games.shipwright
     games.pokeemerald
-    games.zelda3
-    games.pokefirered
     games.pokeyellow
     games.pokegold
     pc
