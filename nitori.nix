@@ -53,12 +53,6 @@
     ffmpeg
     man-pages
     man-pages-posix
-    games.pokecrystal
-    games.pokered
-    games.pokeemerald
-    games.pokefirered
-    games.pokeyellow
-    games.pokegold
     games.zelda3
     games.shipwright
     pc
@@ -68,13 +62,27 @@
     dolphin-emu
     citra-nightly
     mgba
+
+    # force roms to be loaded and print them for ease
+    (writeScriptBin "printroms"
+      ''
+        #!${pkgs.rc}/bin/rc
+        ls -d ${pkgs.games.pokecrystal}/rom/*
+        ls -d ${pkgs.games.pokered}/rom/*
+        ls -d ${pkgs.games.pokeemerald}/rom/*
+        ls -d ${games.pokefirered}/rom/*
+        ls -d ${games.pokeyellow}/rom/*
+        ls -d ${games.pokegold}/rom/*
+      ''
+    )
+
   ];
 
   jovian.devices.steamdeck.enable = true;
   jovian.steam.autoStart = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
   networking.networkmanager.enable = true;
-  jovian.steam.desktopSession = "plasmawayland";
+  jovian.steam.desktopSession = "plasma";
   jovian.steam.user = "moody";
   jovian.steam.enable = true;
   programs.steam.enable = true;

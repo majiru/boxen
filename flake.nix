@@ -13,13 +13,16 @@
     gameover.url = "github:majiru/gameover";
     gameover.inputs.nixpkgs.follows = "nixpkgs";
 
+    kde2nix.url = "github:nix-community/kde2nix";
+    kde2nix.inputs.nixpkgs.follows = "nixpkgs";
+
     vacme-vim = {
       url = "github:olivertaylor/vacme";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, jovian, ... }@inputs: {
+  outputs = { self, nixpkgs, jovian, kde2nix, ... }@inputs: {
     nixosConfigurations = {
       "sakuya" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -51,6 +54,7 @@
           ./prefs.nix
           ./nix.nix
           jovian.outputs.nixosModules.jovian
+          kde2nix.outputs.nixosModules.default
           ./nitori.nix
           ./home.nix
         ];
