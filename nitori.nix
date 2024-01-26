@@ -56,21 +56,32 @@
     games.pokecrystal
     games.pokered
     games.pokeemerald
+    games.pokefirered
     games.pokeyellow
     games.pokegold
+    games.zelda3
+    games.shipwright
     pc
     ed
     file
     unzrip
     dolphin-emu
     citra-nightly
+    mgba
   ];
 
   jovian.devices.steamdeck.enable = true;
   jovian.steam.autoStart = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  networking.networkmanager.enable = true;
   jovian.steam.desktopSession = "plasmawayland";
+  jovian.steam.user = "moody";
+  jovian.steam.enable = true;
+  programs.steam.enable = true;
 
-  networking.useDHCP = true;
+  hardware.opengl.enable = true;
+  security.sudo.wheelNeedsPassword = false;
+
   networking.hostName = "nitori";
   users.users.moody = {
     isNormalUser = true;
@@ -78,5 +89,6 @@
   };
 
   services.udev.packages = [ pkgs.dolphin-emu ];
+  services.openssh.enable = true;
   system.stateVersion = "24.05";
 }
