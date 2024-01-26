@@ -198,6 +198,7 @@
             };
           };
           "marisa"."*".bg = "#b2b2b2 solid_color";
+          "nitori"."*".bg = "#b2b2b2 solid_color";
         }."${config.networking.hostName}";
       };
     };

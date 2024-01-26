@@ -53,6 +53,13 @@
     "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"
   ];
 
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      DNSOverTLS=opportunistic
+    '';
+  };
+
   security.pam.dp9ik = {
     enable = true;
     authserver = "flan";
