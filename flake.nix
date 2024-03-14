@@ -2,7 +2,7 @@
   description = "moody's linux systems";
 
   inputs = {
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -13,16 +13,13 @@
     gameover.url = "github:majiru/gameover";
     gameover.inputs.nixpkgs.follows = "nixpkgs";
 
-    kde2nix.url = "github:nix-community/kde2nix";
-    kde2nix.inputs.nixpkgs.follows = "nixpkgs";
-
     vacme-vim = {
       url = "github:olivertaylor/vacme";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, jovian, kde2nix, ... }@inputs: {
+  outputs = { self, nixpkgs, jovian, ... }@inputs: {
     nixosConfigurations = {
       "sakuya" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -54,7 +51,6 @@
           ./prefs.nix
           ./nix.nix
           jovian.outputs.nixosModules.jovian
-          kde2nix.outputs.nixosModules.default
           ./nitori.nix
           ./home.nix
         ];

@@ -12,9 +12,6 @@
   networking.useDHCP = false;
   networking.hostName = "sakuya";
   networking.hostId = "d028bb22";
-  networking.extraHosts = ''
-    192.168.168.209 flan
-  '';
   systemd.network = {
     enable = true;
     netdevs = {
@@ -42,6 +39,7 @@
       "40-br0" = {
         matchConfig.Name = "br0";
         networkConfig.DHCP = "ipv4";
+        dhcpV4Config.UseDomains = true;
         bridgeConfig = { };
         linkConfig.RequiredForOnline = "carrier";
       };
@@ -62,7 +60,7 @@
 
   security.pam.dp9ik = {
     enable = true;
-    authserver = "flan";
+    authserver = "flan.genso";
   };
 
   system.fsPackages = [ pkgs._9ptls ];
@@ -128,7 +126,7 @@
     man-pages-posix
     games.pokecrystal
     games.pokered
-    games.shipwright
+    shipwright
     games.pokeemerald
     games.zelda3
     games.pokefirered
@@ -143,7 +141,6 @@
     nixpkgs-review
     unzrip
     dolphin-emu
-    citra-nightly
     pinentry-curses
     chromium
     (pkgs.wrapOBS {
@@ -187,7 +184,6 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
   };
   services.avahi.enable = true;
   networking.firewall.enable = false;

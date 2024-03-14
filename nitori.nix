@@ -62,14 +62,16 @@
     dolphin-emu
     citra-nightly
     mgba
+    duckstation
 
     # force roms to be loaded and print them for ease
     (writeScriptBin "printroms"
       ''
         #!${pkgs.rc}/bin/rc
-        ls -d ${pkgs.games.pokecrystal}/rom/*
-        ls -d ${pkgs.games.pokered}/rom/*
-        ls -d ${pkgs.games.pokeemerald}/rom/*
+        ls -d ${games.pokecrystal}/rom/*
+        ls -d ${games.pokered}/rom/*
+        ls -d ${games.pokeemerald}/rom/*
+        ls -d ${games.pokeinclement}/rom/*
         ls -d ${games.pokefirered}/rom/*
         ls -d ${games.pokeyellow}/rom/*
         ls -d ${games.pokegold}/rom/*
